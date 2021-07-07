@@ -19,11 +19,12 @@ class PostNewNotification extends Notification
      *
      * @return void
      */
-    private $post,$cv;
-    public function __construct(Post $post,Cv $cv)
+    private $post, $cv, $accepted;
+    public function __construct(Post $post, Cv $cv, $accepted)
     {
-        $this->post=$post;
-        $this->cv=$cv;
+        $this->post = $post;
+        $this->cv = $cv;
+        $this->accepted = $accepted;
     }
 
     /**
@@ -54,9 +55,10 @@ class PostNewNotification extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'id'=> $this->post->id,
+            'id' => $this->post->id,
             'nameofcompany' => $this->post->nameofcompany,
-            'user_id' => $this->cv->user_id
+            'user_id' => $this->cv->user_id,
+            'accept_or_not' => $this->accepted,
 
         ];
     }

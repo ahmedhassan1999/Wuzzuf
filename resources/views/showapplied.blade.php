@@ -45,7 +45,14 @@
                          <button type="submit" class="btn btn-success">Accept</button>
                 </form>
                 </td>
-              <td><button type="button" class="btn btn-danger">Reject</button></td>
+              <td>
+                <form method="POST" action="{{route('Reject',[$post,$cv])}}" >
+                    @csrf
+                    @method('POST')
+                    <button type="submit" class="btn btn-danger">Reject</button>
+                </form>
+
+                </td>
             </tr>
             @endforeach
             @endforeach

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNew2ToCvPostTable extends Migration
+class AddForeginToCvsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddNew2ToCvPostTable extends Migration
      */
     public function up()
     {
-        Schema::table('cv_post', function (Blueprint $table) {
-            $table->foreignId('cv_id')->constrained();
-            $table->foreignId('post_id')->constrained();
+        Schema::table('cvs', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -26,7 +25,7 @@ class AddNew2ToCvPostTable extends Migration
      */
     public function down()
     {
-        Schema::table('cv_post', function (Blueprint $table) {
+        Schema::table('cvs', function (Blueprint $table) {
             //
         });
     }

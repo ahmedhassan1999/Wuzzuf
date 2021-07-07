@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCvPostTable extends Migration
+class CreateCvsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,13 @@ class CreateCvPostTable extends Migration
      */
     public function up()
     {
-        Schema::create('cv_post', function (Blueprint $table) {
+        Schema::create('cvs', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->unsigned();
+            $table->string('name');
+            $table->integer('age');
+            $table->string('specialization');
+            $table->string('post_image');
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ class CreateCvPostTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cv_post');
+        Schema::dropIfExists('cvs');
     }
 }

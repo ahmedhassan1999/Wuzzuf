@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Cv extends Model
 {
     use HasFactory;
-    protected $table='cvs';
-    protected $guarded=[];
+    protected $table = 'cvs';
+    protected $guarded = [];
     public function user()
     {
         return $this->belongsTo('App\Models\User');
@@ -20,9 +20,13 @@ class Cv extends Model
     }
     public function getPostImageAttribute($value)
     {
-      if (strpos($value, 'https://') !== FALSE || strpos($value, 'http://') !== FALSE) {
-        return $value;
-      }
+        if (strpos($value, 'https://') !== FALSE || strpos($value, 'http://') !== FALSE) {
+            return $value;
+        }
         return asset('storage/' . $value);
+    }
+    public function accepts()
+    {
+        return $this->hasMany('App\Models\Accepting');
     }
 }

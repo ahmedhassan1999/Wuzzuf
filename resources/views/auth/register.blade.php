@@ -41,9 +41,12 @@
                             <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('type') }}</label>
 
                             <div class="col-md-6">
-                                <input id="type" type="text" class="form-control @error('type') is-invalid @enderror" name="type" value="{{ old('type') }}" required autocomplete="type" autofocus>
+                                <select  name="type" >
+                                    <option name="employee" value="employee">employee</option>
+                                    <option name="company" value="company">company</option>
 
-                                @error('type')
+                                  </select>
+                                 @error('type')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

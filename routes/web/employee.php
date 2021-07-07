@@ -19,16 +19,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/showapplayedemployee', [App\Http\Controllers\CompanyController::class, 'index'])->name('showapplaied');
 
 
-Route::get('/post', [App\Http\Controllers\PostController::class, 'create'])->name('post');
-Route::post('/storepost', [App\Http\Controllers\PostController::class, 'store'])->name('go');
+
+
 Route::get('/profileemployee', [App\Http\Controllers\EmployeeController::class, 'make'])->name('profile');
 Route::post('/applay/{post}/user', [App\Http\Controllers\EmployeeController::class, 'applay'])->name('applay');
 Route::post('/enterdata', [App\Http\Controllers\EmployeeController::class, 'save'])->name('save');
-Route::post('AcceptTheEmployee/{post}/{cv}',[App\Http\Controllers\CompanyController::class, 'Accept'])->name('Accept');
+Route::post('savecomment/{post_id}',[App\Http\Controllers\CommentController::class,'write_comment'])->name('write-comment');
 Route::get('Notification', [App\Http\Controllers\EmployeeController::class, 'notification'])->name('notification');
-
 

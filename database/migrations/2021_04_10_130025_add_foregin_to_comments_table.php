@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNameofcolumn6ToCvsTable extends Migration
+class AddForeginToCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddNameofcolumn6ToCvsTable extends Migration
      */
     public function up()
     {
-        Schema::table('cvs', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained();
+        Schema::table('comments', function (Blueprint $table) {
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -25,7 +26,7 @@ class AddNameofcolumn6ToCvsTable extends Migration
      */
     public function down()
     {
-        Schema::table('cvs', function (Blueprint $table) {
+        Schema::table('comments', function (Blueprint $table) {
             //
         });
     }
